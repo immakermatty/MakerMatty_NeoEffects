@@ -1,2 +1,2 @@
-# MakerMatty_NeoEff
+# MakerMatty_NeoEffects
 Neopixel effect library
