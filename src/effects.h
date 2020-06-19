@@ -61,7 +61,8 @@ class PlasmaShotEffect : public Effect {
         for (int32_t i = 0; i < len; i++) {
 
             CRGB c = color;
-            uint8_t scale = (uint8_t)tmap(tabs(i - neopixelIndex), 0, (int)count, 255, 0);
+            int32_t delta = i - neopixelIndex;
+            uint8_t scale = tmap<int32_t>(abs(delta), 0, count, 255, 0);
             c.nscale8(scale);
 
             leds[i] = c;
