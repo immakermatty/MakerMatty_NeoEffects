@@ -22,14 +22,20 @@ public:
     bool at(const time_ms time, Frame* const frame);
     time_ms untilEnd(const time_ms time);
 
-    /* getter */ inline const bool reversed() const { return duration_ < 0 ? true : false; };
-    /* getter */ inline const time_ms duration() const { return abs(duration_); } //getter
+    Effect* next() const { return next_; };
+    void next(Effect* value) { next_ = std::move(value); };
+
+    bool reversed() const;
+    time_ms duration() const;
 
 protected:
     virtual void onAt(time_ms time, time_ms duration, Frame* const frame) = 0;
 
 private:
+    Effect* next_;
     time_ms duration_;
+
+    void updateDuration();
 };
 
 NEOEFFECTS_NAMESPACE_END

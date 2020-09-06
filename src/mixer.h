@@ -14,14 +14,22 @@ NEOEFFECTS_NAMESPACE_BEGIN
 
 namespace Mixer {
 
-typedef Frame* (*FrCombFunc)(Frame* src, Frame* frame);
+typedef Frame* (*DrawFunc)(Frame* src, const Frame* msk);
 
-Frame* set(Frame* src, Frame* add);
-Frame* add(Frame* src, Frame* add);
-Frame* mask(Frame* src, Frame* msk);
-Frame* mask(Frame* src, uint8_t msk);
-Frame* scale(Frame* src, Frame* msk);
-Frame* scale(Frame* src, uint8_t msk);
+// @brief Set msk frame to src frame
+Frame* set(Frame* src, const Frame* msk);
+
+// @brief Add frame to another frame
+Frame* add(Frame* src, const Frame* msk);
+
+// @brief Filter frame by another frame
+Frame* sub(Frame* src, const Frame* msk);
+
+// @brief Filter frame by another frame
+Frame* mul(Frame* src, const Frame* msk);
+
+// @brief Filter frame by another frame
+Frame* fil(Frame* src, const Frame* msk);
 
 }
 
