@@ -54,7 +54,12 @@ time_ms Effect::untilEnd(const time_ms time)
     return duration_ < 0 ? true : false;
 }
 
-Effect::~Effect() {};
+Effect::~Effect()
+{
+    if (next_) {
+        delete next_;
+    }
+};
 
 NEOEFFECTS_NAMESPACE_END
 

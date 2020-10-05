@@ -195,10 +195,10 @@ class PaletteRollEffect : public Effect {
     {
         int32_t length = frame->length();
 
-        uint8_t palletteIndex = tmap(time, 0, duration - 1, 0, UINT8_MAX / 2);
+        int32_t palletteIndex = tmap(time, 0, duration - 1, 0, UINT8_MAX / 2);
 
         for (int i = 0; i < length; i++) {
-            uint8_t delta = tmap<uint8_t>(i, 0, length, 0, 255 - zoom);
+            int32_t delta = tmap<int32_t>(i, 0, length, 0, 255 - zoom);
             frame->draw(i, ColorFromPalette(palette, palletteIndex + delta, 0xFF, blend));
         }
     }
